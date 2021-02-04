@@ -19,7 +19,7 @@ router.get("/:id", (req, res) => {
   }
 });
 
-// Create Member
+// =========================  START OF CREATING A NEW MEMBER       =======================
 router.post("/", (req, res) => {
   const newMember = {
     ...req.body,
@@ -31,12 +31,15 @@ router.post("/", (req, res) => {
     return res.status(400).json({ msg: "Please include a name and email" });
   }
 
+  //pushing the new member onto the array of memebers
   members.push(newMember);
-  res.json(members);
-  // res.redirect('/');
+
+  res.redirect("/");
 });
 
-// Update Member
+// =========================  END OF CREATING A NEW MEMBER       =======================
+
+// =========================  START OF UPDATING MEMBER       =======================
 router.put("/:id", (req, res) => {
   const found = members.some(idFilter(req));
 
@@ -52,6 +55,8 @@ router.put("/:id", (req, res) => {
     res.status(400).json({ msg: `No member with the id of ${req.params.id}` });
   }
 });
+
+// =========================  END OF UPDATING MEMBER       =======================
 
 // Delete Member
 router.delete("/:id", (req, res) => {

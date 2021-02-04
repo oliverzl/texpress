@@ -1,0 +1,1 @@
+this public folder is only for templating purposes.
